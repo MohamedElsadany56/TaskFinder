@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Reset Password</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #3c9cdf;
+        }
+
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-page" class="container">
+        <h1>Login</h1>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        <button class="btn" onclick="login()">Login</button>
+        <a href="#" class="link" onclick="showResetPage()">Forgot Password?</a>
+    </div>
+
+    <div id="reset-page" class="container" style="display: none;">
+        <h1>Reset Password</h1>
+        <div class="form-group">
+            <label for="reset-email">Email</label>
+            <input type="email" id="reset-email" placeholder="Enter your email">
+        </div>
+        <button class="btn" onclick="resetPassword()">Reset Password</button>
+        <a href="#" class="link" onclick="showLoginPage()">Back to Login</a>
+    </div>
+
+    <script>
+        function showResetPage() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('reset-page').style.display = 'block';
+        }
+
+        function showLoginPage() {
+            document.getElementById('reset-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'block';
+        }
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                alert(`Logged in as ${email}`);
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+
+        function resetPassword() {
+            const resetEmail = document.getElementById('reset-email').value;
+
+            if (resetEmail) {
+                alert(`Password reset link sent to ${resetEmail}`);
+            } else {
+                alert('Please enter your email.');
+            }
+        }
+    </script>
+</body>
+</html>
